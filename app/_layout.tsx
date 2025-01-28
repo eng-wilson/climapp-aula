@@ -27,6 +27,7 @@ export default function RootLayout() {
           headerShown: false,
         }}
       />
+      <Stack.Screen name="cities" options={{ headerShown: false }} />
     </Stack>
   );
 }
