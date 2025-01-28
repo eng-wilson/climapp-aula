@@ -43,6 +43,6 @@ const style = StyleSheet.create({
   buttonTitle: {
     color: "#01080E",
     fontSize: 20,
-    fontWeight: "700",
+    fontWeight: "600",
   },
 });
