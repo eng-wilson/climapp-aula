@@ -69,7 +69,7 @@ const style = StyleSheet.create({
   container: {
     flex: 1,
     paddingHorizontal: 16,
-    gap: 16,
+    gap: 40,
     paddingTop: 40,
   },
   scrollList: {

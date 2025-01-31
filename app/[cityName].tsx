@@ -1,10 +1,11 @@
-import { StyleSheet, View, Text, Image } from "react-native";
-import { useLocalSearchParams } from "expo-router";
+import { StyleSheet, View, Text, Image, TouchableOpacity } from "react-native";
+import { useLocalSearchParams, useRouter } from "expo-router";
 import { useEffect, useState } from "react";
 import { LinearGradient } from "expo-linear-gradient";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 
 const CityDetails = () => {
+  const router = useRouter();
   const searchParams = useLocalSearchParams();
   const [cityDetails, setCityDetails] = useState(null);
 
@@ -27,15 +28,23 @@ const CityDetails = () => {
     handleData();
   }, []);
 
+  if (!cityDetails) {
+    return (
+      <LinearGradient colors={["#00457d", "#05051f"]} style={style.container} />
+    );
+  }
+
   return (
     <LinearGradient colors={["#00457d", "#05051f"]} style={style.container}>
       <View>
-        <MaterialIcons
-          name="chevron-left"
-          size={24}
-          color={"#fff"}
+        <TouchableOpacity
+          onPress={() => {
+            router.back();
+          }}
           style={style.headerIcon}
-        />
+        >
+          <MaterialIcons name="chevron-left" size={24} color={"#fff"} />
+        </TouchableOpacity>
         <Text style={style.headerTitle}>{cityDetails.city}</Text>
       </View>
 
@@ -120,6 +129,7 @@ const style = StyleSheet.create({
   headerIcon: {
     position: "absolute",
     left: 0,
+    zIndex: 10,
   },
   cardImage: {
     width: 72,
